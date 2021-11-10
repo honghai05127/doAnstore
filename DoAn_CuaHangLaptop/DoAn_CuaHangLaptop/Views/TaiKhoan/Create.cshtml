@@ -1,0 +1,36 @@
+﻿@model DoAn_CuaHangLaptop.Models.TaiKhoan
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="m-5">
+        <h4 align="center">Tạo tài khoản</h4>
+        <hr/>
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Tên đăng nhập</label>
+                <input type="text" class="form-control" asp-for="TenDangNhap">
+                @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Mật Khẩu</label>
+                <input type="text" class="form-control" asp-for="MatKhau">
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group" align="center">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index">Trở về trang danh sách</a>
+        </div>
+    </div>
+</div>
+
+
+   
