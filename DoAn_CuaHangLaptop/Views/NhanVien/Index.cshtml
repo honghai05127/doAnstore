@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DoAn_CuaHangLaptop.Models.NhanVien>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card m-5">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Danh sách nhân viên</strong>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+                <a href="@Url.Action("Create","NhanVien")" class="btn btn-success">Thêm</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenDangNhap)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenNV)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NgaySinh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GioiTinh)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ChucVu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiaChi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NgayVL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoDT)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenDangNhap)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenNV)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgaySinh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GioiTinh)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChucVu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayVL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoDT)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Cập nhật", "Edit", new { manv = item.MaNV }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Xem chi tiết", "Details", new { manv = item.MaNV }, new { @class = "btn btn-secondary" })
+                            
+                            @Html.ActionLink("Xóa", "Delete", new { manv = item.MaNV, tendangnhap = item.TenDangNhap }, new { onclick = "return confirm('Bạn chắc chắn xóa nhân viên này?');", @class = "btn btn-danger" } )
+                           
+                        </td>
+                    </tr>
+                   
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<style>
+    table th {
+        font-weight: bold !important;
+    }
+</style>
