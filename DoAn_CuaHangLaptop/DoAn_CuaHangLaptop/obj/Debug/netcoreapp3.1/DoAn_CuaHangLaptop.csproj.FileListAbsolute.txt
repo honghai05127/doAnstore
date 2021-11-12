@@ -309,3 +309,11 @@ D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLap
 D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\NhanVien\Details.cshtml.g.cs
 D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\TaiKhoan\Details.cshtml.g.cs
 D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\TaiKhoan\Edit.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\HoaDon\Index.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\HoaDon\Create.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\HoaDon\Details.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\HoaDon\Edit.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\CTHD\Index.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\CTHD\Details.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\CTHD\Create.cshtml.g.cs
+D:\Nam3\framework\framework_IS220.M11_11-main\DoAn_CuaHangLaptop\DoAn_CuaHangLaptop\obj\Debug\netcoreapp3.1\Razor\Views\CTHD\Edit.cshtml.g.cs

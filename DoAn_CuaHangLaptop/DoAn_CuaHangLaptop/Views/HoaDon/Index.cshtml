@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DoAn_CuaHangLaptop.Models.HoaDon>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card m-5">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Danh sách hóa đơn</strong>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+                <a href="@Url.Action("Create","HoaDon")" class="btn btn-success">Thêm</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaKH)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaNV)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaSK)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NgayHD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiaChiGiaoHang)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TongTien)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ThanhTien)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaKH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaNV)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaSK)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayHD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongTien)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ThanhTien)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Cập nhật", "Edit", new { mahd = item.MaHD }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Xem chi tiết", "Details", new { mahd = item.MaHD }, new { @class = "btn btn-secondary" })
+
+                            @Html.ActionLink("Xóa", "Delete", new { mahd = item.MaHD}, new { onclick = "return confirm('Bạn chắc chắn xóa hóa đơn này?');", @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<style>
+    table th {
+        font-weight: bold !important;
+    }
+</style>

@@ -17,7 +17,6 @@ namespace DoAn_CuaHangLaptop.Controllers
         // GET: NhanVienController/Create
         public ActionResult Create()
         {
-            var model = new NhanVien();
             return View();
         }
 
@@ -26,22 +25,27 @@ namespace DoAn_CuaHangLaptop.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(NhanVien nv)
         {
-
+            
             LapTopContext context = HttpContext.RequestServices.GetService(typeof(DoAn_CuaHangLaptop.Models.LapTopContext)) as LapTopContext;
             if (!ModelState.IsValid)
             {
                 return View(nv);
             }
-            if (context.taoNhanVien(nv) == 0)
+            int temp = context.taoNhanVien(nv);
+            if (temp == 0)
             {
                 ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
             }
+            else if(temp == 1)
+            {
+                ModelState.AddModelError("", "Người lao động phải lớn hơn 16 tuổi");
+
+            }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "TaiKhoan", new { tendangnhap = nv.TenDangNhap });
+
             }
-
-
             return View(nv);
         }
 
@@ -65,43 +69,47 @@ namespace DoAn_CuaHangLaptop.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(string manv, NhanVien nvien)
         {
-            try
-            {
+           
                 LapTopContext context = HttpContext.RequestServices.GetService(typeof(DoAn_CuaHangLaptop.Models.LapTopContext)) as LapTopContext;
-                if(context.capNhatNhanVien(nvien) != 0)
+                if(context.capNhatNhanVien(nvien) == 0)
                 {
-                    return RedirectToAction("Index");
+                    ModelState.AddModelError("", "Người lao động phải lớn hơn 16 tuổi");
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+                else
+                {
+                TempData["AlertMessage"] = "Cập nhật thành công";
+                TempData["AlertType"] = "alert alert-success";
+                return RedirectToAction("Index");
+                }
+             
+          
+                return View(nvien);
+           
         }
 
        
 
         // POST: NhanVienController/Delete/5
      
-        public ActionResult Delete(string manv, NhanVien nv)
+        public ActionResult Delete(string manv, string tendangnhap)
         {
             try
             {
                 LapTopContext context = HttpContext.RequestServices.GetService(typeof(DoAn_CuaHangLaptop.Models.LapTopContext)) as LapTopContext;
 
                 context.xoaNhanVien(manv);
+                context.xoaTaiKhoan(tendangnhap);
+            TempData["AlertMessage"] = "Xóa thành công";
+            TempData["AlertType"] = "alert alert-success";
+            return RedirectToAction(nameof(Index));
 
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                TempData["AlertMessage"] = "Tồn tại đơn hàng của người dùng này. Không thể xóa";
+                TempData["AlertType"] = "alert alert-danger";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-           
-                
-         
-          
         }
     }
 }

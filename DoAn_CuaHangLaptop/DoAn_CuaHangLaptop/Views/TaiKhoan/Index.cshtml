@@ -4,7 +4,14 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section Scripts{ 
+<script>
+    setTimeout(function () {
+        $('#msgA').fadeOut('slow');
+    }, 2000);
+   
+</script>
+}
 <div class="card m-5">
     <div class="card-header">
         <div class="row">
@@ -16,6 +23,12 @@
             </div>
         </div>
     </div>
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div id="msgA" class="@TempData["AlertType"]" role="alert">
+            @TempData["AlertMessage"]
+        </div>
+    }
     <div class="card-body p-3">
         <table class="table table-striped">
             <thead>
@@ -37,10 +50,10 @@
                             @Html.ActionLink("Cập nhật", "Edit", new { tendangnhap = item.TenDangNhap }, new { @class = "btn btn-info" })
                             @Html.ActionLink("Xem chi tiết", "Details", new { tendangnhap = item.TenDangNhap }, new { @class = "btn btn-secondary" })
                             @Html.ActionLink("Xóa", "Delete", new { tendangnhap = item.TenDangNhap }, new { onclick = "return confirm('Bạn chắc chắn xóa tài khoản này?');", @class = "btn btn-danger" })
-                           
+
                         </td>
                     </tr>
-                    
+
                 }
             </tbody>
         </table>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DoAn_CuaHangLaptop.Models;
+
 namespace DoAn_CuaHangLaptop.Controllers
 {
     public class TaiKhoanController : Controller
@@ -47,6 +48,8 @@ namespace DoAn_CuaHangLaptop.Controllers
             }
             else
             {
+                TempData["AlertMessage"] = "Thêm thành công";
+                TempData["AlertType"] = "alert alert-success";
                 return RedirectToAction("Index");
             }
 
@@ -71,10 +74,12 @@ namespace DoAn_CuaHangLaptop.Controllers
                 LapTopContext context = HttpContext.RequestServices.GetService(typeof(DoAn_CuaHangLaptop.Models.LapTopContext)) as LapTopContext;
                 if (context.capNhatTaiKhoan(tk) != 0)
                 {
-                return RedirectToAction(nameof(Index));
+                    TempData["AlertMessage"] = "Cập nhật thành công";
+                    TempData["AlertType"] = "alert alert-success";
+                    return RedirectToAction(nameof(Index));
               
                 }
-            return View();
+                return View(tk);
           
               
         }
@@ -84,11 +89,23 @@ namespace DoAn_CuaHangLaptop.Controllers
 
         public ActionResult Delete(string tendangnhap, TaiKhoan tk)
         {
+            try
+            {
+
                LapTopContext context = HttpContext.RequestServices.GetService(typeof(DoAn_CuaHangLaptop.Models.LapTopContext)) as LapTopContext;
                 context.xoaTaiKhoan(tendangnhap);
+                TempData["AlertMessage"] = "Xóa thành công";
+                TempData["AlertType"] = "alert alert-success";
                 return RedirectToAction("Index");
           
-           
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                TempData["AlertMessage"] = "Tồn tại người dùng có tài khoản này. Không thể xóa";
+                TempData["AlertType"] = "alert alert-danger";
+                return RedirectToAction("Index");
+            }
+
         }
     }
 }
